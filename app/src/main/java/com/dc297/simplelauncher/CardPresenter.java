@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.dc297.simplelauncher.domain.App;
+import com.dc297.simplelauncher.domain.AppDto;
 
 /*
  * A CardPresenter is used to generate Views and bind Objects to them on demand.
@@ -56,7 +56,7 @@ public class CardPresenter extends Presenter {
 
     @Override
     public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item) {
-        App app = (App) item;
+        AppDto app = (AppDto) item;
         ImageCardView cardView = (ImageCardView) viewHolder.view;
 
         Log.d(TAG, "onBindViewHolder");

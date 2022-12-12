@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class App implements Serializable {
+public class AppDto implements Serializable {
     static final long serialVersionUID = 727566175075960653L;
     private CharSequence title;
     private String packageName;
@@ -40,8 +40,8 @@ public class App implements Serializable {
                 '}';
     }
 
-    public static App from(ResolveInfo resolveInfo, PackageManager pm) {
-        App app = new App();
+    public static AppDto from(ResolveInfo resolveInfo, PackageManager pm) {
+        AppDto app = new AppDto();
         app.setTitle(resolveInfo.loadLabel(pm));
         app.setLogo(resolveInfo.loadIcon(pm));
         app.setPackageName(resolveInfo.activityInfo.packageName);
