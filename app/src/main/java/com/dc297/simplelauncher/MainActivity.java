@@ -1,6 +1,7 @@
 package com.dc297.simplelauncher;
 
 import android.os.Bundle;
+import android.view.Gravity;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -18,5 +19,7 @@ public class MainActivity extends FragmentActivity {
                     .replace(R.id.main_browse_fragment, new MainFragment())
                     .commitNow();
         }
+
+        getWindow().setGravity(Gravity.END);
     }
 }

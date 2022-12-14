@@ -2,7 +2,6 @@ package com.dc297.simplelauncher;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import androidx.core.content.ContextCompat;
 import androidx.leanback.app.ErrorSupportFragment;
