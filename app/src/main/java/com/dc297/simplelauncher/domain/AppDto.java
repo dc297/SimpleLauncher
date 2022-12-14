@@ -1,5 +1,6 @@
 package com.dc297.simplelauncher.domain;
 
+import android.content.ComponentName;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
@@ -44,14 +45,15 @@ public class AppDto implements Serializable {
     public static AppDto from(ResolveInfo resolveInfo, PackageManager pm) {
         AppDto app = new AppDto();
         app.setTitle(resolveInfo.loadLabel(pm));
-        try {
-            app.setLogo(Optional.ofNullable(
-                    Optional.ofNullable(pm.getApplicationBanner(resolveInfo.activityInfo.packageName))
-                            .orElse(pm.getApplicationIcon(resolveInfo.activityInfo.packageName)))
-                    .orElse(pm.getApplicationLogo(resolveInfo.activityInfo.packageName)));
+        ComponentName cn = new ComponentName(resolveInfo.activityInfo.packageName, resolveInfo.activityInfo.name);
+        try {app.setLogo(Optional.ofNullable(
+                        Optional.ofNullable(pm.getApplicationBanner(resolveInfo.activityInfo.applicationInfo))
+                                .orElse(pm.getActivityBanner(cn)))
+                .orElse(pm.getApplicationIcon(resolveInfo.activityInfo.applicationInfo)));
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+
         app.setPackageName(resolveInfo.activityInfo.packageName);
         return app;
     }
